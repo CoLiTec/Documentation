@@ -1,0 +1,5 @@
+%OdKT50 2000.0 UTC                                                                          - Identification of Telescope; Epoch; Time scale (1st line)
+NORAD   date   time(UTC)  RA(hour)    Dec(deg) accuracy(asec) magnitude(estimate)           - Description of content
+NNNNN   ddmmyy hhmmssssss hhmmssssss  ddmmssssss sss mm.mm                                  - Format
+16908   190117 1525587185 0349262807 +4252058600 001 07.00                                  - example  (2nd line and more)
+37806   261015 1051065811 2304244723 -0647452850 001 11.63                                  - example

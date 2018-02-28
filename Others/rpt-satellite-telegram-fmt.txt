@@ -1,0 +1,36 @@
+—»—“ 00000 027386
+
+The first line contains the code-number of the observation point   
+(in this case = 00000, Long = 30.75564 deg, Lat = 46.47778 deg, Alt = 56m) and  NORAD number of the object.
+ATTENTION.  In positions 8-16: HHMMSSSSS, observation time (UTC) with THREE decimal positions of seconds! It is necessary for high angular velocity of LEO.
+
+
+120716 205101001 16342833 -16492498 002000
+------------------------------------------
+123456789012345678901234567890123456789012
+         1         2         3         4
+
+
+Positions 1-6: DDMMYY, observing date
+
+Position 7: Space
+
+Positions 8-16: HHMMSSSSS, observation time (UTC)
+
+Position 17: Space
+
+Positions 18-25: HHMMSSSS, right ascension in J2000 epoch in watchmaking terms (hours, minutes and seconds with decimal fractions)
+
+Position 26: Space
+
+Position 27: required sign of the declination (+ or -)
+
+Positions 28-35: DDMMSSSS, declination in J2000 epoch in terms of degree (degrees, minutes, seconds, with decimal fractions)
+
+Position 36: Space
+
+Positions 37-39: Accuracy estimation of the measured position, an integer arcseconds, supplemented with leading zeros up to 3 digits
+
+Positions 40-42: always is 000. Measurements of position have non-regular intervals. The brightness measurements have equal intervals = 0.02 s and are available separately.
+
+ ŒÕ≈÷ - keyword latter line of group.
