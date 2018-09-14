@@ -56,7 +56,7 @@
   </changelog>
 </changelogs>
 ```
-##### 2. Установить номер версии в «Build\Version.xml» - новые значения \<major\>, \<minor\> и \<release\>
+##### 3. Установить номер версии в «Build\Version.xml» - новые значения \<major\>, \<minor\> и \<release\>
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <version tag="0" date="$Date: 2018-09-14 00:10:33Z $">
