@@ -21,6 +21,8 @@
 - Добавить в начало дерева новую ветку \<changelog\> (без атрибутов)
 - В новую ветку \<changelog\> добавить группирирующие ветки \<added\>, \<changed\> и др. Описание этих веток см. на сайте [keepachangelog.com](https://keepachangelog.com))
 - Для каждой группирирующей ветки добавить \<item\>. Возможно в \<item\> добавить атрибут *«class="as,sat,vs"»* – это  определит класс(ы) приложения к которому(-ым) относится данный \<item\>, если атрибут не указан, то данный \<item\> относится ко всем классам.
+
+Пример «Build\Changelog.xml»
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <changelogs>
@@ -57,6 +59,7 @@
 </changelogs>
 ```
 ##### 2. Установить номер версии в «Build\Version.xml» - новые значения \<major\>, \<minor\> и \<release\>
+Пример «Build\Version.xml»
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <version tag="0" date="$Date: 2018-09-14 00:10:33Z $">
