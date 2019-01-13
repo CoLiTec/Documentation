@@ -6,25 +6,44 @@
 - ОС Windows 10
 - клиент [SVN](https://tortoisesvn.net) с поддержкой командной строки
 - система создания инсталляторов для Windows [Inno Setup](http://www.jrsoftware.org/isdl.php#stable)
-- Environment Variables: добавить в переменную Path пути к SVN клиент и Inno Setup
+- интерпретатор [Python 3.x](https://www.python.org)
+- Environment Variables: добавить в переменную Path пути к SVN клиенту и Inno Setup
 - авторизоваться через установленный клиент SVN в репозитории CoLiTec
+
+Проверка комплектации (cmd):
+```
+svn --version
+iscc
+python --version
+```
+
+##### Ubuntu:
+- ОС Ubuntu 16.04 или выше
+- клиент [SVN](https://subversion.apache.org)
+- интерпретатор [Python 3.x](https://www.python.org)
+- авторизоваться через установленный клиент SVN в репозитории CoLiTec
+
+Проверка комплектации (bash):
+```
+svn --version
+python3 --version
+```
 
 ### Подготовка к сборке
 
 ##### 1. Checkout\Update директории «Build»
 
-##### 2. Добавить описание изменений для новой версии в «Build\Changelog.xml»:
-- В текущую (первую) ветку \<changelog\> добавить атрибуты:<br/>
-*«version="%major%.%minor%.%release%.%build%"»*<br/>
-*«date="%YYYY-MM-DD HH:MM:SSZ"»*<br/>
-Значения атрибутов взять из «Build\Version.xml»
-- Добавить в начало дерева новую ветку \<changelog\> (без атрибутов)
+##### 2. Добавить описание изменений для новой версии в «Build\changelog.xml»:
+- Добавить в начало дерева новую ветку \<changelog\> с атрибутами:<br/>
+*«version="%major%.%minor%.%release%.$Rev$"»*<br/>
+*«date="$Date$"»*<br/>
+Атрибуты предыдущей ветки очистить от ключевых слов *$Date$* и *$Rev$*
 - В новую ветку \<changelog\> добавить группирирующие ветки \<added\>, \<changed\> и др. Описание этих веток см. на сайте [keepachangelog.com](https://keepachangelog.com))
 - Для каждой группирирующей ветки добавить \<item\>. Возможно в \<item\> добавить атрибут *«class="as,sat,vs"»* – это  определит класс(ы) приложения к которому(-ым) относится данный \<item\>, если атрибут не указан, то данный \<item\> относится ко всем классам.
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<changelogs>
-  <changelog>
+<changelogs tag="1">
+  <changelog version="1.9.1.$Rev: 87 $" date="$Date: 2019-01-13 20:42:08Z $">
     <added>
       <item>Software distribution</item>
       <item>New License file</item>
@@ -56,22 +75,13 @@
   </changelog>
 </changelogs>
 ```
-##### 3. Установить номер версии в «Build\Version.xml» - новые значения \<major\>, \<minor\> и \<release\>
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<version tag="0" date="$Date: 2018-09-14 00:10:33Z $">
-  <major>1</major>
-  <minor>8</minor>
-  <release>9</release>
-  <build>$Rev: 529 $</build>
-</version>
-```
-##### 4. Commit директории Build
-SVN автоматически установит значения узла \<build\> и атрибута *«Date»* в «Build\Version.xml». Таким образом версия дистрибутива привяжется к номеру ревизии в репозитории.
+##### 3. Commit директории Build
+SVN автоматически установит значения номера сборки атрибута *«version»* и значение атрибута *«date»* для текущей ветки в «Build\changelog.xml». Таким образом версия дистрибутива привяжется к номеру ревизии в репозитории.
 
 ### Запуск сборки
 
 ##### Windows:
+НУЖНО ОБНОВИТЬ ИНФУ
 1. Checkout\Update директории «Build» в корень диска «С:\»
 2. Выполнить команду в командной строке:
 ```posh
