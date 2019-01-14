@@ -34,3 +34,39 @@ sudo apt purge colitec_package_name
 ```
 dpkg --list | grep colitec
 ```
+В случае ручной установки
+- предоставить права на чтение/запись для всей директории colitec:
+```
+chmod -R 700 path_to_colitec
+```
+- если версия Java ниже 8 (проверить - ```java -version```):
+```
+sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer 
+```
+- если версия gcc ниже 4.8 (проверить - ```gсс -v```):
+```
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt-get update
+sudo apt-get install gcc-4.8
+sudo update-alternatives --remove-all gcc
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 20
+sudo update-alternatives --config gcc
+```
+- если версия g++ ниже 4.8 (проверить - ```g++ -v```):
+```
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt-get update
+sudo apt-get install g++-4.8
+sudo update-alternatives --remove-all g++
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 20
+sudo update-alternatives --config g++
+```
+При установки x32 пакета в x64 систему (режим "сова на глобусе"):
+```
+sudo apt-get install libpam0g:i386
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get dist-upgrade
+```
