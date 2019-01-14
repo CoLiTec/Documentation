@@ -4,40 +4,40 @@
 
 ##### Windows:
 - ОС Windows 10
+- интерпретатор [Python 3.x](https://www.python.org)
 - клиент [SVN](https://tortoisesvn.net) с поддержкой командной строки
 - система создания инсталляторов для Windows [Inno Setup](http://www.jrsoftware.org/isdl.php#stable)
-- интерпретатор [Python 3.x](https://www.python.org)
 - Environment Variables: добавить в переменную Path пути к SVN клиенту и Inno Setup
-- авторизоваться через установленный клиент SVN в репозитории CoLiTec
+- авторизоваться через установленный клиент SVN в [репозитории CoLiTec] (https://subversion.assembla.com/svn/colitecclosed.clt/trunk)
 
-Проверка комплектации (cmd):
+Для проверки в командной строке выполнить команды:
 ```
+python --version
 svn --version
 iscc
-python --version
 ```
 
 ##### Ubuntu:
 - ОС Ubuntu 16.04 или выше
-- клиент [SVN](https://subversion.apache.org)
 - интерпретатор [Python 3.x](https://www.python.org)
-- авторизоваться через установленный клиент SVN в репозитории CoLiTec
+- клиент [SVN](https://subversion.apache.org)
+- авторизоваться через установленный клиент SVN в [репозитории CoLiTec] (https://subversion.assembla.com/svn/colitecclosed.clt/trunk)
 
-Проверка комплектации (bash):
+Для проверки в терминале выполнить команды:
 ```
-svn --version
 python3 --version
+svn --version
 ```
 
 ### Подготовка к сборке
 
 ##### 1. Checkout\Update директории «Build»
 
-##### 2. Добавить описание изменений для новой версии в «Build\changelog.xml»:
+##### 2. Добавить номер новой версии и описание изменений в «Build\changelog.xml»:
 - Добавить в начало дерева новую ветку \<changelog\> с атрибутами:<br/>
 *«version="%major%.%minor%.%release%.$Rev$"»*<br/>
-*«date="$Date$"»*<br/>
-Атрибуты предыдущей ветки очистить от ключевых слов *$Date$* и *$Rev$*
+*«date="$Date$"»*
+- Атрибуты предыдущей ветки очистить от ключевых слов *$Date$* и *$Rev$*
 - В новую ветку \<changelog\> добавить группирирующие ветки \<added\>, \<changed\> и др. Описание этих веток см. на сайте [keepachangelog.com](https://keepachangelog.com))
 - Для каждой группирирующей ветки добавить \<item\>. Возможно в \<item\> добавить атрибут *«class="as,sat,vs"»* – это  определит класс(ы) приложения к которому(-ым) относится данный \<item\>, если атрибут не указан, то данный \<item\> относится ко всем классам.
 ```xml
