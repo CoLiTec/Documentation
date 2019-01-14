@@ -3,28 +3,28 @@
 ### Интеграционная машина
 
 ##### Windows:
-- ОС Windows 10
+- ОС Windows 10, x64
 - интерпретатор [Python 3.x](https://www.python.org)
 - клиент [SVN](https://tortoisesvn.net) с поддержкой командной строки
 - система создания инсталляторов для Windows [Inno Setup](http://www.jrsoftware.org/isdl.php#stable)
 - Environment Variables: добавить в переменную Path пути к SVN клиенту и Inno Setup
-- авторизоваться через установленный клиент SVN в [репозитории CoLiTec] (https://subversion.assembla.com/svn/colitecclosed.clt/trunk)
+- авторизоваться через установленный клиент SVN в [репозитории CoLiTec](https://subversion.assembla.com/svn/colitecclosed.clt/trunk)
 
 Для проверки в командной строке выполнить команды:
-```
+```posh
 python --version
 svn --version
 iscc
 ```
 
 ##### Ubuntu:
-- ОС Ubuntu 16.04 или выше
+- ОС Ubuntu 16.04 или выше, x64  
 - интерпретатор [Python 3.x](https://www.python.org)
 - клиент [SVN](https://subversion.apache.org)
-- авторизоваться через установленный клиент SVN в [репозитории CoLiTec] (https://subversion.assembla.com/svn/colitecclosed.clt/trunk)
+- авторизоваться через установленный клиент SVN в [репозитории CoLiTec](https://subversion.assembla.com/svn/colitecclosed.clt/trunk)
 
 Для проверки в терминале выполнить команды:
-```
+```posh
 python3 --version
 svn --version
 ```
@@ -79,12 +79,32 @@ svn --version
 SVN автоматически установит значения номера сборки атрибута *«version»* и значение атрибута *«date»* для текущей ветки в «Build\changelog.xml». Таким образом версия дистрибутива привяжется к номеру ревизии в репозитории.
 
 ### Запуск сборки
+1. Checkout\Update директории **«Build»**
+2. Запустить скрипт **main.py** (возможно с параметрами, см. ниже)
+3. Дождаться сообщения об успешной сборке: **«Ok, operation is complete, see \<out\> directory»**
 
-##### Windows:
-НУЖНО ОБНОВИТЬ ИНФУ
-1. Checkout\Update директории «Build» в корень диска «С:\»
-2. Выполнить команду в командной строке:
-```posh
-PowerShell -ExecutionPolicy Bypass -File "C:\Build\Windows\setup.ps1"
+Поддерживаются следующие параметры (все необязательные):
+- cpu - разряность, возможные значения: (x32, x64), по умолчанию: определяется разрядность ос машины
+- sys - целевая ос, возможные значения: (windows, ubuntu), по умолчанию: определяется ос машины
+- typ - класс приложения, возможные значения: (vs, as, sat), по умолчанию: vs
+- own - бренд, возможные значения: (colitec, verbitsky), по умолчанию: colitec
+- rev - номер ревизии в репозитории (trunk), по данным этой ревизии будет собиратся дистрибутив, возможные значения: (90: HEAD], по умолчанию: HEAD
+- out - выходная директория, где будет сохранен готовый дистрибутив, по умолчанию: завист от sys, "с:\colitec-lastbuild\out" для windows, "/~/colitec-lastbuild/out" для ubuntu
+
+windows-пример:
 ```
-На диске «C:\» будет создана директория «C:\colitec-lastbuild». В нее будет произведен экспорт модулей из репозитория, заданной в «Build\Version.xml» ревизии. Потом будут проведены корректирующие работы и собственно упаковка в инсталлятор отдельного набора модулей для каждого класса. После будет выведено сообщение об успешной сборке «Ok, operation is complete». Все! Готовые инсталляционные пакеты CoLiTec будут находится в директории **«С:\colitec-lastbuild\Out»**
+python main.py --cpu=x64 --typ=sat --out=c:\temp\res
+```
+
+ubuntu-пример:
+```
+python3 main.py --cpu=x64 --typ=sat --out=/home/vmcolitec/Documents/res
+```
+
+Допускается запускать сразу несколько команд:
+```
+python main.py --cpu=x32 --typ=sat --own=colitec --out=c:\temp\res
+python main.py --cpu=x64 --typ=sat --own=colitec --out=c:\temp\res
+python main.py --cpu=x32 --typ=sat --own=verbitsky --out=c:\temp\res
+python main.py --cpu=x64 --typ=sat --own=verbitsky --out=c:\temp\res
+```
