@@ -6,9 +6,10 @@
 - ОС Windows 10, x64
 - интерпретатор [Python 3.x](https://www.python.org)
 - клиент [SVN](https://tortoisesvn.net) с поддержкой командной строки
-- система создания инсталляторов для Windows [Inno Setup](http://www.jrsoftware.org/isdl.php#stable)
-- Environment Variables: добавить в переменную Path пути к SVN клиенту и Inno Setup
 - авторизоваться через установленный клиент SVN в [репозитории CoLiTec](https://subversion.assembla.com/svn/colitecclosed.clt/trunk)
+- система создания инсталляторов для Windows [Inno Setup](http://www.jrsoftware.org/isdl.php#stable)
+- Environment Variables, добавить в переменную Path путь к SVN клиенту, по умолчанию: "C:\Program Files\TortoiseSVN\bin"
+- Environment Variables, добавить в переменную Path путь к Inno Setup, по умолчанию: "C:\Program Files (x86)\Inno Setup 5"
 
 Для проверки в командной строке выполнить команды:
 ```posh
