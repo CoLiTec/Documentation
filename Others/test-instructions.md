@@ -14,7 +14,6 @@
 ```posh
 python --version
 svn --version
-iscc
 ```
 
 ##### Настроить Google Drive:
