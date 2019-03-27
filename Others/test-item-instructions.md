@@ -7,3 +7,7 @@
 3. Подготовить [модуль сравнения](Others/test-instructions.md#модули-сравнения) и разместить его в «BinWindows64» и «BinUbuntu64»
 4. Подготовить [файл задачи](Others/test-instructions.md#задачи) и разместить его в «test/tasks»
 5. Добавить ссылку на файл задачи в [файл сценария](Others/test-instructions.md#сценарии)
+
+Google Drive использовать свой, под аккаунтом @eosda (не забыть предоставить общий доступ)
+
+Репозиторий для резмещения модулей сравнения, файлов задач и сенариев использовать [TEST](https://subversion.assembla.com/svn/colitecclosed.test/trunk)
